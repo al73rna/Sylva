@@ -18,7 +18,7 @@ def find(tmp,_TH=0.9):
     else:
         return None
 
-def findall(tmp,_TH=0.99):
+def findAll(tmp,_TH=0.99):
     result = []
     img = np.array(ImageGrab.grab())
     img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
@@ -37,7 +37,7 @@ def exists(tmp,_TH=0.9):
     else:
         return False
 
-def waitfor(tmp,_timer="inf",_TH=0.9):
+def waitFor(tmp,_timer="inf",_TH=0.9):
     if _timer == "inf":
         while(not exists(tmp,_TH)):
             sleep(0.5)
@@ -47,7 +47,7 @@ def waitfor(tmp,_timer="inf",_TH=0.9):
             sleep(0.2)
             timer -= 0.2
 
-def waituntil(tmp,_timer="inf",_TH=0.9):
+def waitUntil(tmp,_timer="inf",_TH=0.9):
     if _timer == "inf":
         while(exists(tmp,_TH)):
             sleep(0.5)

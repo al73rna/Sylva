@@ -165,13 +165,13 @@ def keyUp(keyName):
     keyCode=keyDic[keyName]
     user32.keybd_event(keyCode,0,2,0)
 
-def presskey(keyName):
+def pressKey(keyName):
     keyCode=keyDic[keyName]
     user32.keybd_event(keyCode,0,0,0)
     user32.keybd_event(keyCode,0,2,0)
     sleep(0.05)
 
-def typestring(str,_interval = 0.05):
+def typeString(str,_interval = 0.05):
     for i in str:
         if(i.islower()):
             keyDown(i.lower())
