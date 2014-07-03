@@ -153,18 +153,19 @@ keyDic={
     'LAUNCH_APP1' : 0xB6,                        # Start Application 1 key
     'LAUNCH_APP2' : 0xB7,                       # Start Application 2 key
 }
+#_______
+
+user32=ctypes.windll.user32
+
 def keyDown(keyName):
-    user32=ctypes.windll.user32
     keyCode=keyDic[keyName]
     user32.keybd_event(keyCode,0,0,0)
 
 def keyUp(keyName):
-    user32=ctypes.windll.user32
     keyCode=keyDic[keyName]
     user32.keybd_event(keyCode,0,2,0)
 
 def presskey(keyName):
-    user32=ctypes.windll.user32
     keyCode=keyDic[keyName]
     user32.keybd_event(keyCode,0,0,0)
     user32.keybd_event(keyCode,0,2,0)
