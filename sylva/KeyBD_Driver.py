@@ -1,6 +1,7 @@
 __author__ = 'Al73rnA'
 
 import ctypes
+from time import sleep
 
 keyDic={
     '0' : 0x30 ,
@@ -161,3 +162,25 @@ def keyUp(keyName):
     user32=ctypes.windll.user32
     keyCode=keyDic[keyName]
     user32.keybd_event(keyCode,0,2,0)
+
+def presskey(keyName):
+    user32=ctypes.windll.user32
+    keyCode=keyDic[keyName]
+    user32.keybd_event(keyCode,0,0,0)
+    user32.keybd_event(keyCode,0,2,0)
+    sleep(0.05)
+
+def typestring(str,_interval = 0.05):
+    for i in str:
+        if(i.islower()):
+            keyDown(i.lower())
+            keyUp(i.lower())
+            sleep(_interval)
+        else:
+            keyDown("LSHIFT")
+            keyDown(i.lower())
+            keyUp(i.lower())
+            keyUp("LSHIFT")
+            sleep(_interval)
+
+
