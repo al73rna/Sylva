@@ -48,6 +48,7 @@ keyDic={
     'XBUTTON2': 0x06 ,              # X2 mouse button
     'BACK': 0x08 ,                        # BACKSPACE key
     'TAB': 0x09 ,                          # TAB key
+    '    ': 0x09 ,                          # TAB key
     'CLEAR': 0x0C ,                      # CLEAR key
     'RETURN': 0x0D ,                   # ENTER key
     'SHIFT': 0x10,                       # SHIFT key
@@ -67,6 +68,7 @@ keyDic={
     'ACCEPT': 0x1E ,                     # IME accept
     'MODECHANGE': 0x1F ,          # IME mode change request
     'SPACE': 0x20 ,                      # SPACEBAR
+    ' ': 0x20 ,                      # SPACEBAR
     'PRIOR': 0x21  ,                      # PAGE UP key
     'NEXT': 0x22 ,                        # PAGE DOWN key
     'END': 0x23 ,                          # END key
@@ -97,11 +99,16 @@ keyDic={
     'NUMPAD8': 0x68 ,                  # Numeric keypad 8 key
     'NUMPAD9': 0x69 ,                  # Numeric keypad 9 key
     'MULTIPLY': 0x6A ,                 # Multiply key
+    '*': 0x6A ,                        #
     'ADD': 0x6B ,                           # Add key
+    '+': 0x6B ,                           #
     'SEPARATOR': 0x6C ,              # Separator key
     'SUBTRACT': 0x6D ,                # Subtract key
+    '-': 0x6D ,                # Subtract key
     'DECIMAL': 0x6E  ,                  # Decimal key
+    '.': 0x6E  ,                  # Decimal key
     'DIVIDE': 0x6F ,                      # Divide key
+    '/': 0x6F ,                      # Divide key
     'F1': 0x70  ,                              # F1 key
     'F2': 0x71  ,                              # F2 key
     'F3': 0x72  ,                             # F3 key

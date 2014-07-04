@@ -5,7 +5,8 @@ import cv2
 from PIL import ImageGrab,Image
 from time import sleep
 
-temp = cv2.imread("ax2.png")
+def img(str):
+    return cv2.imread(str)
 
 def find(tmp,_TH=0.9):
     img = np.array(ImageGrab.grab())

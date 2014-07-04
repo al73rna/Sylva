@@ -45,8 +45,3 @@ def mouseHover(pos):
     user32.SetCursorPos(x, y)
     user32.mouse_event(0x0001, x, y, 0, 0)
 
-
-
-
-mouseHover((10,10))
-mouseClick((0,0))
