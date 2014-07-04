@@ -8,7 +8,7 @@ from time import sleep
 def img(str):
     return cv2.imread(str)
 
-def find(tmp,_TH=0.9):
+def find(tmp,_TH=0.90):
     img = np.array(ImageGrab.grab())
     img = cv2.cvtColor(img,cv2.COLOR_RGB2BGR)
     res = cv2.minMaxLoc(cv2.matchTemplate(img,tmp,cv2.TM_CCOEFF_NORMED))

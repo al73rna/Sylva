@@ -99,16 +99,11 @@ keyDic={
     'NUMPAD8': 0x68 ,                  # Numeric keypad 8 key
     'NUMPAD9': 0x69 ,                  # Numeric keypad 9 key
     'MULTIPLY': 0x6A ,                 # Multiply key
-    '*': 0x6A ,                        #
     'ADD': 0x6B ,                           # Add key
-    '+': 0x6B ,                           #
     'SEPARATOR': 0x6C ,              # Separator key
     'SUBTRACT': 0x6D ,                # Subtract key
-    '-': 0x6D ,                # Subtract key
     'DECIMAL': 0x6E  ,                  # Decimal key
-    '.': 0x6E  ,                  # Decimal key
     'DIVIDE': 0x6F ,                      # Divide key
-    '/': 0x6F ,                      # Divide key
     'F1': 0x70  ,                              # F1 key
     'F2': 0x71  ,                              # F2 key
     'F3': 0x72  ,                             # F3 key
@@ -159,6 +154,42 @@ keyDic={
     'LAUNCH_MEDIA_SELECT' : 0xB5,      # Select Media key
     'LAUNCH_APP1' : 0xB6,                        # Start Application 1 key
     'LAUNCH_APP2' : 0xB7,                       # Start Application 2 key
+
+    'OEM_1' : 0xBA  ,                   # Used for miscellaneous characters; it can vary by keyboard.
+    ';' : 0xBA  ,#  For the US standard keyboard, the ';:' key
+    'OEM_PLUS' : 0xBB  ,# For any country/region, the '+' key
+    '=' : 0xBB  ,
+    'OEM_COMMA' : 0xBC  ,
+    ',' : 0xBC  ,# For any country/region, the ',' key
+    'OEM_MINUS' : 0xBD   ,        # For any country/region, the '-' key
+    '-' : 0xBD   ,        # For any country/region, the '-' key
+    'OEM_PERIOD' : 0xBE   ,        # For any country/region, the '.' key
+    '.' : 0xBE   ,
+    'OEM_2' : 0xBF         ,            # Used for miscellaneous characters; it can vary by keyboard.
+    '/' : 0xBF         ,            # For the US standard keyboard, the '/?' key
+    'OEM_3' : 0xC0         ,            # Used for miscellaneous characters; it can vary by keyboard.
+    '`' : 0xC0         ,                                              # For the US standard keyboard, the '`~' key
+    'OEM_4' : 0xDB          ,           # Used for miscellaneous characters; it can vary by keyboard.
+    '[' : 0xDB          ,                                              # For the US standard keyboard, the '[{' key
+    'OEM_5' : 0xDC           ,          # Used for miscellaneous characters; it can vary by keyboard.
+    "\\" : 0xDC           ,
+    'OEM_6' : 0xDD          ,           # Used for miscellaneous characters; it can vary by keyboard.
+    ']' : 0xDD          ,                                             # For the US standard keyboard, the ']}' key
+    'OEM_7' : 0xDE           ,          # Used for miscellaneous characters; it can vary by keyboard.
+    "'" : 0xDE           ,                                              # For the US standard keyboard, the 'single-quote/double-quote' key
+    'OEM_8' : 0xDF            ,         # Used for miscellaneous characters; it can vary by keyboard.
+    'OEM_102' : 0xE2           ,       # Either the angle bracket key or the backslash key on the RT 102-key keyboard
+    'PROCESSKEY' : 0xE5         ,   # IME PROCESS key
+    'PACKET' : 0xE7          ,           # Used to pass Unicode characters as if they were keystrokes. The     'PACKET key is the low word of a 32-bit Virtual Key value used for non-keyboard input methods. For more information, see Remark in KEYBDINPUT, SendInput, WM_KEYDOWN, and WM_KEYUP
+    'ATTN' : 0xF6             ,           # Attn key
+    'CRSEL' : 0xF7            ,          # CrSel key
+    'EXSEL' : 0xF8             ,         # ExSel key
+    'EREOF' : 0xF9             ,        # Erase EOF key
+    'PLAY' : 0xFA              ,        # Play key
+    'ZOOM' : 0xFB               ,     # Zoom key
+    'PA1' : 0xFD                ,       # PA1 key
+    'OEM_CLEAR' : 0xFE          , # Clear key
+
 }
 #_______
 
@@ -178,17 +209,32 @@ def pressKey(keyName):
     user32.keybd_event(keyCode,0,2,0)
     sleep(0.05)
 
+chardic = {'1':'!','2':'@','3':'#','4':'$','5':'%','6':'^','7':'&','8':'*','9':'(','0':')','-':'_','=':'+','[':'{',
+           ']':'}',';':':',"'":'"',',':'<','.':'>','/':'?','\\':'|','`':'~' }
+
 def typeString(str,_interval = 0.05):
-    for i in str:
-        if(i.islower()):
-            keyDown(i.lower())
-            keyUp(i.lower())
+    for i in str :
+        if(i in "abcdefghijklmnopqrstuvwxyz "):
+            keyDown(i)
+            keyUp(i)
             sleep(_interval)
-        else:
+        elif i in "ABCDEFGHIJKLMNOPQRTSUVWXYZ":
             keyDown("LSHIFT")
             keyDown(i.lower())
             keyUp(i.lower())
             keyUp("LSHIFT")
             sleep(_interval)
-
+        elif i in chardic.keys():
+            keyDown(i)
+            keyUp(i)
+            sleep(_interval)
+        elif i in chardic.values():
+            ch = chardic.keys()[chardic.values().index(i)]
+            keyDown("LSHIFT")
+            keyDown(ch)
+            keyUp(ch)
+            keyUp("LSHIFT")
+            sleep(_interval)
+        else:
+            raise "not supportet"
 
